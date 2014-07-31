@@ -5,8 +5,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import materialise.moogle.R;
-
 /**
  * Created by HZKok on 7/7/2014.
  */

@@ -2,10 +2,7 @@ package com.kokhouser.simplifieddrawer.library;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import materialise.moogle.R;
 
 /**
  * Created by HZKok on 25/7/2014.
