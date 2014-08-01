@@ -31,37 +31,158 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
+        <pre><code>$ cd your_repo_root/repo_name
 $ git fetch origin
 $ git checkout gh-pages
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<h3>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h3>
+
+<p>At its core, ASD provides two classes that (hopefully) make creating drawers easier - DrawerActivity and DrawerManager. </p>
+
+<p>It is currently <del><strong>NOT</strong></del> ready for basic use.</p>
+
+<p>A sample app is made available in the "app2" folder. Simply import it into your Android Studio and build. (Play Store listing coming soon).</p>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="draweractivity" class="anchor" href="#draweractivity"><span class="octicon octicon-link"></span></a>DrawerActivity</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>DrawerActivity extends from ActionBarActivity (therefore an AppCompat theme should be used or extended), to ensure compatibility with devices down to API level 7 (They deserve all the love they can get). </p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<p>DrawerActivity, as a class, contains three views that you'll need to be concerned about: <code>mDrawerLayout</code>, <code>leftDrawerList</code>, and <code>rightDrawerList</code>, all three must be included in your activity's layout files (More on that in the "Sample Code" section).</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p><code>mDrawerLayout</code> is Google's implementation of a layout that utilizes drawers. <code>leftDrawerList</code> and <code>rightDrawerList</code> are both, predictably, ListViews that make up your drawers. Both are optional, but the fact that you're considering using this library probably means you should use at least one of them. In the future, I hope to allow users to customize the views they want to use in the left and right drawers, instead of limiting them to the traditional ListViews.</p>
 
 <h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<a name="sample-code" class="anchor" href="#sample-code"><span class="octicon octicon-link"></span></a>Sample Code</h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>Utilizing this library is (hopefully) rather simple, though it is currently lacking in functionality beyond creating extremely simple drawers. First, your activity layout files should contain the appropriate views.</p>
+
+<p>Sample activity_main.xml:</p>
+
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"&gt;
+
+    &lt;!-- MAIN CONTENT VIEW --&gt;
+    &lt;RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/root_view"&gt;
+    &lt;/RelativeLayout&gt;
+
+    &lt;!-- MAIN CONTENT VIEW ENDS --&gt;
+
+    &lt;!-- LEFT DRAWER
+         Currently, it doesn't matter what you name your listViews, but I may fix that in the future to reduce number of    code necessary to define in the Java files. --&gt;
+
+    &lt;ListView android:id="@+id/left_drawer"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:choiceMode="singleChoice"
+        android:background="#ffffffff" /&gt;
+
+    &lt;!-- RIGHT DRAWER --&gt;
+
+    &lt;ListView android:id="@+id/right_drawer"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:choiceMode="singleChoice"
+        android:background="#ffffffff" /&gt;
+&lt;/android.support.v4.widget.DrawerLayout&gt;
+</code></pre>
+
+<p>Next, in your activity Java file, you should:</p>
+
+<ul>
+<li>Extend from DrawerActivity</li>
+<li>Set values of <code>mDrawerLayout</code>, <code>leftDrawerList</code> and <code>rightDrawerList</code>.</li>
+<li>Create String array containing drawer item names.</li>
+<li>Create int array containing resource ID's of icons.</li>
+<li>Implement OnItemClickListener for drawers.</li>
+<li>Create DrawerManager and pass required info to it.</li>
+</ul><p>Sample MainActivity.java</p>
+
+<pre><code>import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.kokhouser.simplifieddrawer.library.DrawerActivity;
+import com.kokhouser.simplifieddrawer.library.DrawerManager;
+
+
+public class MainActivity extends DrawerActivity {
+
+    Toast toast;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        toast = Toast.makeText(getApplicationContext(), null, Toast.LENGTH_SHORT);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        leftDrawerList = (ListView) findViewById(R.id.left_drawer);
+        rightDrawerList = (ListView) findViewById(R.id.right_drawer);
+        final String[] itemNames = new String[]{"Home", "Favourites", "Settings"};
+        int[] iconNames = new int[]{R.drawable.dashboard_icon, R.drawable.favourite, R.drawable.settings_icon };
+        class DrawerItemListener implements ListView.OnItemClickListener{
+            @Override
+            public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id) {
+                switch (position) {
+                    //Add outcomes of pressing nav drawer items
+                    case 0:
+                        toast.setText("Tapped on " + itemNames[0]);
+                        toast.show();
+                        break;
+                    case 1:
+                        toast.setText("Tapped on " + itemNames[1]);
+                        toast.show();
+                        break;
+                    case 2:
+                        toast.setText("Tapped on " + itemNames[2]);
+                        toast.show();
+                        break;
+
+                }
+            }
+        }
+        DrawerManager drawerManager = new DrawerManager();
+        drawerManager.setlDrawerTitle("Navigation");
+        drawerManager.setrDrawerTitle("Notifications");
+        drawerManager.setMenuTitles(itemNames);
+        drawerManager.setMenuIcons(iconNames);
+        drawerManager.initializeLeftDrawer(this, new DrawerItemListener());
+    }
+}
+</code></pre>
+
+<h3>
+<a name="sample-app" class="anchor" href="#sample-app"><span class="octicon octicon-link"></span></a>Sample App</h3>
+
+<p>A sample application is currently available in the "app2" module included in the project .zip file. Simply import the project into your Android Studio and build. </p>
+
+<p>I hope to have the sample application be more refined and uploaded onto the Play Store in the future.</p>
+
+<h3>
+<a name="collaboration" class="anchor" href="#collaboration"><span class="octicon octicon-link"></span></a>Collaboration</h3>
+
+<p>This is, of course, an open project. I created it to share what I, as a beginner, can think of to simplify the drawer process. That said, I am still very much a beginner, and would appreciate help improving and extending this library. Do feel free to fork the project and work on it, and submit pull requests. </p>
+
+<h3>
+<a name="contact-me" class="anchor" href="#contact-me"><span class="octicon octicon-link"></span></a>Contact me</h3>
+
+<p>My GitHub (and coincidentally Twitter) profile is <a href="https://github.com/kokhouser" class="user-mention">@kokhouser</a>, feel free to drop me messages on either.
+The project's GitHub page is <a href="https://github.com/kokhouser/AndroidSimplifiedDrawer">https://github.com/kokhouser/AndroidSimplifiedDrawer</a></p>
       </section>
     </div>
 
