@@ -19,9 +19,15 @@ As of this version, ASD provides basic, one-layout type of drawer items, contain
 
 <a href="Left Drawer"><img src="http://kokhouser.github.io/Readme/Images/earlysample.png" height="500"></a>
 
+Include In Project
+=======================
+To include ASD in your Android Studio project, simply download the .zip file from this page, and add the "drawer_library" folder as a module in your project.
+
+Make sure you include `compile project (':drawer_library')` in your app's build.gradle file.
+
 Usage
 =======================
-A complete guide on using ASD can be found on the project page.
+A complete guide on using ASD can be found on the [project page](http://kokhouser.github.io/AndroidSimplifiedDrawer/).
 
 
 TO-DO
