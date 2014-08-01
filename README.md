@@ -7,6 +7,8 @@ It is currently ~~**NOT**~~ ready for basic use.
 
 A sample app is made available in the "app2" folder. Simply import it into your Android Studio and build. (Play Store listing coming soon).
 
+[Project page here.](http://kokhouser.github.io/AndroidSimplifiedDrawer/)
+
 Features
 =======================
 The current version of ASD supports extremely basic drawer functionality. It removes a lot of boilerplate code needed to make navigation drawers work.
