@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SimplifiedDrawer</string>
+    <string name="default_drawer_item_label">List Item Name</string>
 </resources>

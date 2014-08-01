@@ -39,7 +39,7 @@ public class DrawerItem implements Item {
     public View getView(LayoutInflater inflater, View convertView) {
         if (convertView == null) {
             // No views to reuse, need to inflate a new view
-            convertView = (View) inflater.inflate(R.layout.drawer_item_layout, null);
+            convertView = inflater.inflate(R.layout.drawer_item_layout, null);
         }
 
         TextView text = (TextView) convertView.findViewById(R.id.textView);
