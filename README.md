@@ -15,7 +15,7 @@ A DrawerActivity class is provided to be extended by any activity that uses a dr
 
 A DrawerManager class is also provided to be used to initialize drawers.
 
-As of this version, ASD provides basic, one-layout type of drawer items, containing a single icon and it's label. In the future, I hope to provide functionality to have custom drawer item types, for both drawers (left and right).
+As of this version, ASD provides basic, one-layout type of drawer items, containing a single icon and its label. In the future, I hope to provide support for custom drawer item types on both drawers (left and right).
 
 <a href="Left Drawer"><img src="http://kokhouser.github.io/Readme/Images/earlysample.png" height="500"></a>
 
