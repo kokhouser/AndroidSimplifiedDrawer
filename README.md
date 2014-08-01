@@ -3,7 +3,9 @@ Android Simplified Drawer
 
 An Android library which provides a simple activity class to extend from to enable both left and right navigation drawers.
 
-It is currently ~~**NOT**~~ ready for basic use.
+It is currently **NOT** ready.
+
+A sample app is made available in the "app2" folder. Simply import it into your Android Studio and build. (Play Store listing coming soon).
 
 Features
 =======================
