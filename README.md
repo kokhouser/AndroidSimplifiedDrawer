@@ -15,7 +15,7 @@ A DrawerManager class is also provided to be used to initialize drawers.
 
 As of this version, ASD provides basic, one-layout type of drawer items, containing a single icon and it's label. In the future, I hope to provide functionality to have custom drawer item types, for both drawers (left and right).
 
-<img src="http://kokhouser.github.io/Readme/Images/earlysample.png" alt="Left Drawer" style="width: 10px;"/>
+<img src="http://kokhouser.github.io/Readme/Images/earlysample.png" alt="Left Drawer" style="width:100px; height:100px"/>
 
 Usage
 =======================
