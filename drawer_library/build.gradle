@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.12+'
+        classpath 'com.android.tools.build:gradle:1.1.0'
     }
 }
 
@@ -14,7 +14,7 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "com.kokhouser.simplifieddrawer.library"
+        //applicationId "com.kokhouser.simplifieddrawer.library"
         minSdkVersion 15
         targetSdkVersion 19
         versionCode 1
@@ -22,8 +22,6 @@ android {
     }
     buildTypes {
         release {
-            runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
